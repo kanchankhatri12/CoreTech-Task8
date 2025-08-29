@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EliteJobs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+        .login-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .login-header {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .login-body {
+            padding: 20px;
+        }
+        .user-type-selector {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .user-type-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .user-type-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .user-type-btn:first-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-crown me-2"></i>EliteJobs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job_listings.html">Browse Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Companies</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-warning">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container">
+        <div class="login-container">
+            <div class="card login-card">
+                <div class="login-header">
+                    <h3><i class="fas fa-lock me-2"></i>Login to Your Account</h3>
+                </div>
+                <div class="login-body">
+                    <div class="user-type-selector">
+                        <div class="user-type-btn active" data-type="jobseeker">Job Seeker</div>
+                        <div class="user-type-btn" data-type="employer">Employer</div>
+                        <div class="user-type-btn" data-type="admin">Admin</div>
+                    </div>
+                    
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="text-center">
+                        <p>Don't have an account? <a href="register.html">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get user type from URL parameter if exists
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            
+            // Set active user type
+            if (type) {
+                document.querySelectorAll('.user-type-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.type === type) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
+            // User type selection
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.user-type-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const userType = document.querySelector('.user-type-btn.active').dataset.type;
+                
+                // Simple validation
+                if (!email || !password) {
+                    alert('Please enter both email and password.');
+                    return;
+                }
+                
+                // Simulate login process
+                // In a real application, this would be handled by a backend
+                alert(`Logging in as ${userType}...`);
+                
+                // Redirect based on user type
+                switch(userType) {
+                    case 'jobseeker':
+                        window.location.href = 'job_seeker_dashboard.html';
+                        break;
+                    case 'employer':
+                        window.location.href = 'employer_dashboard.html';
+                        break;
+                    case 'admin':
+                        window.location.href = 'admin_dashboard.html';
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

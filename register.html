@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - EliteJobs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .register-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .register-header {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .register-body {
+            padding: 20px;
+        }
+        .user-type-selector {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .user-type-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .user-type-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .user-type-btn:not(:last-child) {
+            border-right: none;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .admin-note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-crown me-2"></i>EliteJobs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job_listings.html">Browse Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Companies</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-warning">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="container">
+        <div class="register-container">
+            <div class="card register-card">
+                <div class="register-header">
+                    <h3><i class="fas fa-user-plus me-2"></i>Create an Account</h3>
+                </div>
+                <div class="register-body">
+                    <div class="user-type-selector">
+                        <div class="user-type-btn active" data-type="jobseeker">Job Seeker</div>
+                        <div class="user-type-btn" data-type="employer">Employer</div>
+                        <div class="user-type-btn" data-type="admin">Admin</div>
+                    </div>
+                    
+                    <!-- Job Seeker Registration Form -->
+                    <form id="jobseekerForm" class="form-section active">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="jsFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="jsFirstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="jsLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="jsLastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jsEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="jsEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jsPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="jsPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jsConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="jsConfirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="jsTerms" required>
+                            <label class="form-check-label" for="jsTerms">I agree to the Terms & Conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register as Job Seeker</button>
+                    </form>
+                    
+                    <!-- Employer Registration Form -->
+                    <form id="employerForm" class="form-section">
+                        <div class="mb-3">
+                            <label for="empCompanyName" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="empCompanyName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="empEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="empEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="empPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="empPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="empConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="empConfirmPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="empWebsite" class="form-label">Company Website (optional)</label>
+                            <input type="url" class="form-control" id="empWebsite">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="empTerms" required>
+                            <label class="form-check-label" for="empTerms">I agree to the Terms & Conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register as Employer</button>
+                    </form>
+                    
+                    <!-- Admin Registration Form -->
+                    <form id="adminForm" class="form-section">
+                        <div class="admin-note">
+                            <i class="fas fa-info-circle me-1"></i> 
+                            Admin registration requires special authorization. Your account will need to be verified by a super administrator.
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="adminFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="adminFirstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="adminLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="adminLastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="adminEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="adminConfirmPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminKey" class="form-label">Admin Authorization Key</label>
+                            <input type="password" class="form-control" id="adminKey" required>
+                            <div class="form-text">Contact system administrator to obtain authorization key</div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="adminTerms" required>
+                            <label class="form-check-label" for="adminTerms">I agree to the Terms & Conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register as Admin</button>
+                    </form>
+                    
+                    <hr>
+                    
+                    <div class="text-center">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User type selection
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const userType = this.dataset.type;
+                    
+                    document.querySelectorAll('.user-type-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    document.getElementById(userType + 'Form').classList.add('active');
+                });
+            });
+            
+            // Job Seeker Form submission
+            document.getElementById('jobseekerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const firstName = document.getElementById('jsFirstName').value;
+                const lastName = document.getElementById('jsLastName').value;
+                const email = document.getElementById('jsEmail').value;
+                const password = document.getElementById('jsPassword').value;
+                const confirmPassword = document.getElementById('jsConfirmPassword').value;
+                
+                // Simple validation
+                if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+                
+                // Simulate registration process
+                alert('Registration successful! Redirecting to your dashboard...');
+                
+                // Redirect to job seeker dashboard
+                window.location.href = 'job_seeker_dashboard.html';
+            });
+            
+            // Employer Form submission
+            document.getElementById('employerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const companyName = document.getElementById('empCompanyName').value;
+                const email = document.getElementById('empEmail').value;
+                const password = document.getElementById('empPassword').value;
+                const confirmPassword = document.getElementById('empConfirmPassword').value;
+                
+                // Simple validation
+                if (!companyName || !email || !password || !confirmPassword) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+                
+                // Simulate registration process
+                alert('Registration successful! Your account is pending admin approval.');
+                
+                // Redirect to employer dashboard
+                window.location.href = 'employer_dashboard.html';
+            });
+            
+            // Admin Form submission
+            document.getElementById('adminForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const firstName = document.getElementById('adminFirstName').value;
+                const lastName = document.getElementById('adminLastName').value;
+                const email = document.getElementById('adminEmail').value;
+                const password = document.getElementById('adminPassword').value;
+                const confirmPassword = document.getElementById('adminConfirmPassword').value;
+                const adminKey = document.getElementById('adminKey').value;
+                
+                // Simple validation
+                if (!firstName || !lastName || !email || !password || !confirmPassword || !adminKey) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+                
+                // Check admin key (in a real application, this would be verified against a database)
+                if (adminKey !== "ELITEADMIN2023") {
+                    alert('Invalid admin authorization key. Please contact system administrator.');
+                    return;
+                }
+                
+                // Simulate registration process
+                alert('Admin registration successful! Redirecting to admin dashboard...');
+                
+                // Redirect to admin dashboard
+                window.location.href = 'admin_dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management - EliteJobs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-crown me-2"></i>EliteJobs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job_listings.html">Browse Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Companies</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>John Doe
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="job_seeker_profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="job_seeker_applications.html"><i class="fas fa-file-alt me-2"></i>Applications</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="dashboard-sidebar">
+                    <div class="profile-card text-center p-4 mb-4">
+                        <div class="profile-img mx-auto mb-3">
+                            <img src="software.jpg" class="rounded-circle" alt="Profile">
+                        </div>
+                        <h5>John Doe</h5>
+                        <p class="text-muted">Software Developer</p>
+                        <div class="d-grid">
+                            <a href="job_seeker_profile.html" class="btn btn-outline-light">Edit Profile</a>
+                        </div>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="job_seeker_dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="job_seeker_profile.html">
+                                <i class="fas fa-user me-2"></i>Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="job_listings.html">
+                                <i class="fas fa-briefcase me-2"></i>Browse Jobs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="job_seeker_applications.html">
+                                <i class="fas fa-file-alt me-2"></i>Applications
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-bell me-2"></i>Notifications
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="dashboard-content">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3>Profile Management</h3>
+                        <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                    </div>
+                    
+                    <!-- Profile Form -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>Personal Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" value="John" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" value="Doe" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" value="john.doe@example.com" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" value="(555) 123-4567" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="location" class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="location" value="New York, NY" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="jobTitle" class="form-label">Professional Title</label>
+                                        <input type="text" class="form-control" id="jobTitle" value="Software Developer" disabled>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">Professional Summary</label>
+                                    <textarea class="form-control" id="bio" rows="4" disabled>Experienced software developer with 5+ years in the industry. Specialized in frontend development with React and Vue.js. Passionate about creating user-friendly applications and solving complex problems.</textarea>
+                                </div>
+                                <div class="text-end" id="formButtons" style="display: none;">
+                                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Section -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>Skills & Expertise</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Your Skills</label>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-primary p-2">JavaScript</span>
+                                    <span class="badge bg-primary p-2">React</span>
+                                    <span class="badge bg-primary p-2">Vue.js</span>
+                                    <span class="badge bg-primary p-2">HTML/CSS</span>
+                                    <span class="badge bg-primary p-2">Node.js</span>
+                                    <span class="badge bg-primary p-2">Python</span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Add a skill" id="skillInput">
+                                    <button class="btn btn-outline-primary" type="button">Add Skill</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resume Section -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Resume</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Current Resume</label>
+                                <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                    <div>
+                                        <i class="fas fa-file-pdf text-danger me-2"></i>
+                                        <span>John_Doe_Resume.pdf</span>
+                                        <small class="text-muted ms-2">Uploaded on Oct 10, 2023</small>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-primary me-2">Download</button>
+                                        <button class="btn btn-sm btn-outline-danger">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="resumeUpload" class="form-label">Upload New Resume</label>
+                                <input class="form-control" type="file" id="resumeUpload" accept=".pdf,.doc,.docx">
+                                <div class="form-text">Accepted formats: PDF, DOC, DOCX. Max file size: 5MB</div>
+                            </div>
+                            <button class="btn btn-primary">Upload Resume</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Profile edit functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const editProfileBtn = document.getElementById('editProfileBtn');
+            const cancelEdit = document.getElementById('cancelEdit');
+            const formInputs = document.querySelectorAll('#profileForm input, #profileForm textarea');
+            const formButtons = document.getElementById('formButtons');
+            
+            editProfileBtn.addEventListener('click', function() {
+                formInputs.forEach(input => {
+                    input.disabled = false;
+                });
+                formButtons.style.display = 'block';
+                editProfileBtn.style.display = 'none';
+            });
+            
+            cancelEdit.addEventListener('click', function() {
+                formInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                formButtons.style.display = 'none';
+                editProfileBtn.style.display = 'block';
+            });
+            
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                formInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                formButtons.style.display = 'none';
+                editProfileBtn.style.display = 'block';
+                
+                // Show success message
+                alert('Profile updated successfully!');
+            });
+        });
+    </script>
+</body>
+</html>
